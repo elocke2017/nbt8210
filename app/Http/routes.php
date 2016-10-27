@@ -26,6 +26,18 @@ Route::get('/shopping-cart', [
     'as' => 'course.shoppingCart'
 ]);
 
+Route::get('/checkout', [
+    'uses' => 'CourseController@getCheckout',
+    'as' => 'checkout',
+    'middleware' => 'auth'
+]);
+
+Route::post('/checkout', [
+    'uses' => 'CourseController@postCheckout',
+    'as' => 'checkout',
+    'middleware' => 'auth'
+]);
+
 //Route::group(['prefix' => 'user'], function() {
     Route::group(['middleware' => 'guest'], function() {
         Route::get('/user/signup', [
