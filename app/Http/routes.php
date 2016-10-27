@@ -16,33 +16,55 @@ Route::get('/', [
 	'as' => 'course.index'
 ]);
 
+Route::get('/add-to-cart/{id}', [
+    'uses' => 'CourseController@getAddToCart',
+    'as' => 'course.addToCart'
+]);
 
-    Route::get('/signup', [
-        'uses' => 'UserController@getSignup',
-        'as' => 'user.signup'
-    ]);
+Route::get('/shopping-cart', [
+    'uses' => 'CourseController@getCart',
+    'as' => 'course.shoppingCart'
+]);
 
-    Route::post('/signup', [
-        'uses' => 'UserController@postSignup',
-        'as' => 'user.signup'
-    ]);
+//Route::group(['prefix' => 'user'], function() {
+    Route::group(['middleware' => 'guest'], function() {
+        Route::get('/user/signup', [
+            'uses' => 'UserController@getSignup',
+            'as' => 'user.signup',
+            //    'middleware' => 'guest',
+        ]);
 
-    Route::get('/signin', [
-        'uses' => 'UserController@getSignin',
-        'as' => 'user.signin'
-    ]);
+        Route::post('/user/signup', [
+            'uses' => 'UserController@postSignup',
+            'as' => 'user.signup',
+            //    'middleware' => 'guest',
+        ]);
 
-    Route::post('/signin', [
-        'uses' => 'UserController@postSignin',
-        'as' => 'user.signin'
-    ]);
+        Route::get('/user/signin', [
+            'uses' => 'UserController@getSignin',
+            'as' => 'user.signin',
+            //    'middleware' => 'guest',
+        ]);
 
-    Route::get('/profile', [
-        'uses' => 'UserController@getProfile',
-        'as' => 'user.profile'
-    ]);
+        Route::post('/user/signin', [
+            'uses' => 'UserController@postSignin',
+            'as' => 'user.signin',
+            //    'middleware' => 'guest',
+        ]);
 
-    Route::get('/logout', [
-        'uses' => 'UserController@getLogout',
-        'as' => 'user.logout'
-    ]);
+    });
+
+    Route::group(['middleware' => 'auth'], function() {
+        Route::get('/user/profile', [
+            'uses' => 'UserController@getProfile',
+            'as' => 'user.profile',
+            //    'middleware' => 'auth',
+        ]);
+
+        Route::get('/user/logout', [
+            'uses' => 'UserController@getLogout',
+            'as' => 'user.logout',
+            //    'middleware' => 'auth',
+        ]);
+    });
+//});

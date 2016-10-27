@@ -8,15 +8,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">NBT</a>
+      <a class="navbar-brand" href="{{ route('course.index') }} }}">NBT</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">HOME <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">OUR CUSTOMERS</a></li>    
-        <li><a href="#">OUR CLASSES</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Classes</a></li>
           </ul>
 
       <form class="navbar-form navbar-left">
@@ -27,14 +27,21 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> SHOPPING CART</a></li>
+        <li>
+          <a href="{{ route('course.shoppingCart') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Shopping Cart
+            <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span></a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> USER ACCOUNT<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user" aria-hidden="true"></i>User Account<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url('/signup') }}">Sign Up</a></li>
-            <li><a href="{{ url('/signin') }}">Sign In</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="{{ url('/logout') }}">LogOut</a></li>
+            @if(Auth::check())
+              <li><a href="{{ route('user.profile')}}">User Profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="{{ route('user.logout') }}">LogOut</a></li>
+            @else
+              <li><a href="{{ route('user.signup')  }}">Sign Up</a></li>
+              <li><a href="{{ route('user.signin') }}">Sign In</a></li>
+            @endif
           </ul>
         </li>
       </ul>
