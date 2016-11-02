@@ -28,6 +28,7 @@ Nebraska Business Training
         <div class="clearfix">
 		<div class="pull-left price">${{ $course->price}}</div>
 		 <a href="{{ route('course.addToCart', ['id' => $course->id]) }}" class="btn btn-success pull-right" role="button">Add To Cart</a>
+		 <a href="http://nbt8210.herokuapp.com/" class="btn btn-success pull-right" role="button">Course Description</a>
 		</div>
       </div>
     </div>
