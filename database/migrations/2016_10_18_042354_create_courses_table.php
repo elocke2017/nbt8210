@@ -15,10 +15,13 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-			$table->string('imagePath');
+			$table->string('imagePath'); //image for course
 			$table->string('title');
 			$table->text('description');
 			$table->float('price');
+            $table->integer('participants')->default(0);  //number of participants enrolled
+            $table->integer('participant_limit')->default(30);  //number of participants (seats) available
+            $table->string('instructor');  //instructor; should be chosen from a list (STILL NEED TO DO!)
         });
     }
 

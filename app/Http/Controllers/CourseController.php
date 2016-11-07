@@ -16,9 +16,9 @@ use Stripe\Stripe;
 class CourseController extends Controller
 {
     public function getIndex()
-	{
-	$courses = Course::all();
-	return view('shop.index', ['courses' => $courses]);
+    {
+        $courses = Course::all();
+        return view('shop.index', ['courses' => $courses]);
 	}
 
     public function getAddToCart(Request $request, $id) {

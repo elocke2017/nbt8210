@@ -126,6 +126,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Zizaco\Entrust\EntrustServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -155,6 +156,10 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * LaravelCollective Html Form & Html
+         */
         Collective\Html\HtmlServiceProvider::class,
 
     ],
@@ -182,6 +187,7 @@ return [
         'Crypt' => Illuminate\Support\Facades\Crypt::class,
         'DB' => Illuminate\Support\Facades\DB::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,

@@ -22,9 +22,9 @@
                     <input type="password" id="password" name="password" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">Sign In</button>
-                {{ csrf_field() }}
-
+                {{ csrf_field() }} <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
             </form>
+            <br>
             <p>Don't have an account? <a href="{{ route('user.signup') }}">Sign Up</a></p>
         </div>
     </div>

@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
 class AuthController extends Controller
 {
     /*
@@ -29,7 +33,8 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
-
+    protected $redirectPath = '/home';
+    protected $loginPath = '/login';
     /**
      * Create a new authentication controller instance.
      *
@@ -37,7 +42,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => ['logout', 'updatePassword']]);
     }
 
     /**
@@ -68,5 +73,47 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Updates the password for the current user.
+     *
+     * @param  void
+     * @return void
+     */
+    public function updatePassword()
+    {
+        if (Auth::check())
+        {
+            $user = Auth::user();
+            $rules = array(
+                'old_password' => 'required',
+                'password' => 'required|confirmed|min:6',
+//                'password' => 'required|alphaNum|between:6,16|confirmed'
+            );
+
+            $validator = Validator::make(Input::all(), $rules);
+            //dd($validator);
+            if ($validator->fails()) {
+                return view('auth.passwords.change')->withErrors($validator);
+//                return view('auth.passwords.change');
+            } else {
+                if (!Hash::check(Input::get('old_password'), $user->password)) {
+                    return view('auth.passwords.change')->withErrors('Your old password does not match');
+                } else {
+                    $user->password = bcrypt(Input::get('password'));
+                    $user->save();
+                    return view('auth.passwords.change')->withErrors('Password has been changed');
+                }
+            }
+        }
+    }
+
+    // This function overrides the one in traits AuthenticatesUsers.php
+    protected function getCredentials($request)
+    {
+        $request['active'] = true;
+        $request['deleted_at'] = null;
+        return $request->only($this->loginUsername(), 'password', 'active', 'deleted_at');
     }
 }

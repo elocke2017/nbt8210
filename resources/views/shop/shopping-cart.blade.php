@@ -14,8 +14,8 @@
                     @foreach($courses as $course)
                         <li class="list-group-item">
                             <span class="badge">{{ $course['qty'] }}</span>
-                            <strong>{{ $course['item']['title']  }}}</strong>
-                            <span class="label label-success">{{ $course['price'] }}</span>
+                            <strong>{{ $course['item']['title']  }}</strong>
+                            <span class="label label-success">$ {{ $course['price'] }}</span>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
                                     Action <span class="caret"></span>
@@ -32,7 +32,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <strong>Total: {{ $totalPrice }}</strong>
+                <strong>Total: $ {{ $totalPrice }}</strong>
             </div>
         </div>
         <hr>

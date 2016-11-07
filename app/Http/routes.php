@@ -11,6 +11,17 @@
 |
 */
 
+Route::get('php-version', function()
+{
+    return phpinfo();
+});
+
+Route::get('laravel-version', function()
+{
+    $laravel = app();
+    return 'Your Laravel Version is '.$laravel::VERSION;
+});
+
 Route::get('/', [
 	'uses' =>'CourseController@getIndex',
 	'as' => 'course.index'
@@ -38,8 +49,18 @@ Route::post('/checkout', [
     'middleware' => 'auth'
 ]);
 
+//Route::group(['middleware' => 'web'], function () {
+Route::auth();
+Route::post('change-password', 'Auth\AuthController@updatePassword');
+Route::get( 'change-password', 'Auth\AuthController@updatePassword');
+
+Route::get('/home', 'HomeController@index');
+
+Route::resource('users', 'UsersController');
+Route::resource('roles', 'RolesController');
+
 //Route::group(['prefix' => 'user'], function() {
-    Route::group(['middleware' => 'guest'], function() {
+    Route::group(['middleware' => 'web'], function() {
         Route::get('/user/signup', [
             'uses' => 'UserController@getSignup',
             'as' => 'user.signup',
