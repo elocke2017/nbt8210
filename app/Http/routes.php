@@ -27,6 +27,11 @@ Route::get('/', [
 	'as' => 'course.index'
 ]);
 
+Route::get('/search', [
+    'uses' => 'CourseController@search',
+    'as' => 'course.search'
+]);
+
 Route::get('/add-to-cart/{id}', [
     'uses' => 'CourseController@getAddToCart',
     'as' => 'course.addToCart'

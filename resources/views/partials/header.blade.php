@@ -20,13 +20,17 @@
         <li><a href="#">Classes</a></li>
           </ul>
 
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+    {!! Form::open(['route' => 'course.search', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search' ]) !!}
+    <!--<form class="navbar-form navbar-left"> -->
 
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+      <div class="input-group">
+      {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...']) !!}
+      <!--<input type="text" name="term" id="term" class="form-control" placeholder="Search">-->
+
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+      <!--</form> -->
+    {!! Form::close() !!}
 
     @if (Auth::check())
       <!-- Left Side Of Navbar -->

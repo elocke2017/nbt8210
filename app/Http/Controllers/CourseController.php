@@ -21,6 +21,18 @@ class CourseController extends Controller
         return view('shop.index', ['courses' => $courses]);
 	}
 
+    public function search(Request $request){
+        $course = Course::where(function($query) use ($request) {
+            if (($term = $request->get('term'))) {
+                $query->where('title', 'like', '%' . $term . '%');
+            }
+        })
+            ->orderBy("id", "desc")
+            ->paginate(5);
+
+        return view('shop.index',['courses' => $course]);
+    }
+
     public function getAddToCart(Request $request, $id) {
         $course = Course::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
