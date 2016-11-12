@@ -28,7 +28,7 @@ class CourseController extends Controller
             }
         })
             ->orderBy("id", "desc")
-            ->paginate(5);
+            ->paginate(2);
 
         return view('shop.index',['courses' => $course]);
     }
