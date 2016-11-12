@@ -9,15 +9,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ route('course.index') }} ">NBT</a>
+      <a class="navbar-brand" href="{{ route('course.index') }} "> <img id="brang-image" alt="website logo" src="http://bloximages.chicago2.vip.townnews.com/kearneyhub.com/content/tncms/assets/v3/editorial/c/f2/cf2e7138-c2a4-59c9-87c5-5b93bb2cdcee/5203b9af58502.image.jpg?resize=167%2C147" height="50px"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="http://nbt8210.herokuapp.com/">HOME <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Classes</a></li>
+        <li><a href="#">Our Clients</a></li>
+        <li><a href="#">Contact Us</a></li>
           </ul>
 
     {!! Form::open(['route' => 'course.search', 'method' => 'GET', 'class' => 'navbar-form navbar-left', 'role' => 'search' ]) !!}
