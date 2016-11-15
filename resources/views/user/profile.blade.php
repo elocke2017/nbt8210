@@ -5,8 +5,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1>User Profile</h1>
+            <h4>{{Auth::user()->name}}</h4>
+            <h4>{{Auth::user()->email}}</h4>
+
             <hr>
-            <h2>My Orders</h2>
+            <h2>My Courses</h2>
             @foreach($orders as $order)
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -14,7 +17,7 @@
                         @foreach($order->cart->items as $item)
                         <li class="list-group-item">
                             <span class="badge">${{ $item['price'] }}</span>
-                            {{ $item['item']['title'] }} | {{ $item['qty'] }} Units
+                            {{ $item['item']['title'] }} | {{ $item['qty'] }} Seat(s)
                         </li>
                         @endforeach
                     </ul>
