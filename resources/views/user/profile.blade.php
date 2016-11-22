@@ -4,9 +4,15 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>User Profile</h1>
-            <h4>{{Auth::user()->name}}</h4>
-            <h4>{{Auth::user()->email}}</h4>
+            <h2>User Profile</h2> <!--need to make these editable!!!-->
+            <h4>Name: {{Auth::user()->name}}</h4>
+            <h4>Email: {{Auth::user()->email}}</h4>
+            <h4>Contact Number: {{Auth::user()->contactNumber}}</h4>
+            <h4>Address 1: {{Auth::user()->address1}}</h4>
+            <h4>Address 2: {{Auth::user()->address2}}</h4>
+            <h4>City: {{Auth::user()->city}}</h4>
+            <h4>State: {{Auth::user()->state}}</h4>
+            <h4>Zip Code: {{Auth::user()->zipCode}}</h4>
 
             <hr>
             <h2>My Courses</h2>

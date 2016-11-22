@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable =['imagePath', 'title', 'description', 'price'];
+    protected $fillable =[
+        'imagePath',
+        'title',
+        'description',
+        'price',
+        'participants',
+        'participant_limit',
+        'instructor'
+    ];
 }

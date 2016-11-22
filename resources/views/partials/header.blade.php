@@ -44,6 +44,7 @@
             <ul class="dropdown-menu multi level" role="menu">
               <li><a href="{{ url('/users') }}"><i class="fa fa-btn fa-fw fa-user"></i>Users</a></li>
               <li><a href="{{ url('/roles') }}"><i class="fa fa-btn fa-fw fa-users"></i>Roles</a></li>
+              <li><a href="{{ url('/courses') }}"><i class="fa fa-btn fa-fw fa-users"></i>Courses</a></li>
               {{--<li class="divider"></li>--}}
               {{--<li><a href="{{ url('/files') }}"><i class="fa fa-btn fa-fw fa-file"></i>Files</a></li>--}}
             </ul>

@@ -105,4 +105,6 @@ Route::resource('roles', 'RolesController');
             //    'middleware' => 'auth',
         ]);
     });
+
+    Route::resource('courses','CourseController');
 //});

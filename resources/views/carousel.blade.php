@@ -21,7 +21,7 @@
                         <div class="carousel-inner" style="text-align: center;">
                             <div class="item active" style="text-align: center;">
                                 <a href="http://www.unomaha.edu/college-of-information-science-and-technology" target="_blank">
-                                    <img src="/images/StudentWordCloud1.jpg" class="img-responsive">
+                                    <img src="StudentWordCloud1.jpg" class="img-responsive">
                                 </a>
                             </div>
                             <div class="item" style="text-align: center;">

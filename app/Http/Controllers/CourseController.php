@@ -24,7 +24,7 @@ class CourseController extends Controller
     public function search(Request $request){
         $course = Course::where(function($query) use ($request) {
             if (($term = $request->get('term'))) {
-                $query->where('title', 'like', '%' . $term . '%');
+                $query->where('title', 'ilike', '%' . $term . '%');  //need to see if this is correct in Heroku! ilike won't work in mySQL
             }
         })
             ->orderBy("id", "desc")
@@ -94,5 +94,68 @@ class CourseController extends Controller
         Session::forget('cart');
         return redirect()->route('course.index')->with('success', 'Successfully purchased courses');
 
+    }
+
+    //attempt to add course view/update/delete page:
+    public function index()
+    {
+        //
+        $courses=Course::all();
+        return view('courses.index',compact('courses'));
+    }
+
+    public function show($title)
+    {
+
+        $course = Course::findOrFail($title);
+
+        return view('courses.show',compact('course'));
+    }
+
+
+    public function create()
+    {
+        return view('courses.create', compact('courses'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+
+        $course= new Course($request->all());
+        $course->save();
+
+        return redirect('courses');
+    }
+
+    public function edit($title)
+    {
+        $course=Course::find($title);
+        return view('courses.edit',compact('course'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($title,Request $request)
+    {
+        //
+        $course= new Course($request->all());
+        $course= Course::find($title);
+        $course->update($request->all());
+        return redirect('courses');
+    }
+
+    public function destroy($title)
+    {
+        Course::find($title)->delete();
+        return redirect('courses');
     }
 }

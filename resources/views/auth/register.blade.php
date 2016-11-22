@@ -23,15 +23,15 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('contact number') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('contactNumber') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Contact Number</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="contact number" value="{{ old('contact number') }}">
 
-                                @if ($errors->has('contact number'))
+                                @if ($errors->has('contactNumber'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('contact number') }}</strong>
+                                        <strong>{{ $errors->first('contactNumber') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -89,15 +89,15 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('zip code') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Zip code</label>
+                        <div class="form-group{{ $errors->has('zipCode') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Zip Code</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="zip code" value="{{ old('zip code') }}">
+                                <input type="text" class="form-control" name="zipCode" value="{{ old('zip code') }}">
 
                                 @if ($errors->has('zip code'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('zip code') }}</strong>
+                                        <strong>{{ $errors->first('zipCode') }}</strong>
                                     </span>
                                 @endif
                             </div>
