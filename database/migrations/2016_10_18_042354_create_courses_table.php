@@ -15,7 +15,7 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-			$table->string('imagePath'); //image for course
+			$table->string('imagePath')->nullable(); //image for course - how do we set a default? How do we allow upload when Admin creates course?
 			$table->string('title');
 			$table->text('description');
 			$table->float('price');
