@@ -15,8 +15,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="http://nbt8210.herokuapp.com/">HOME <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Our Clients</a></li>
+        <li class="active"><a href="{{ route('course.index') }}">Course Home<span class="sr-only">(current)</span></a></li>
+        {{--<li><a href="#">Our Clients</a></li>--}}
         <li><a href="#">Contact Us</a></li>
           </ul>
 
@@ -35,7 +35,7 @@
     @if (Auth::check())
       <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
-          <li><a href="{{ url('/home') }}">Home</a></li>
+          <li><a href="{{ url('/home') }}">User Home</a></li>
           {{-- Menu for Users with Administration Role Only --}}
           @role('admin')
           <li class="dropdown">

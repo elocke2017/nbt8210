@@ -15,15 +15,19 @@
             </tr>
             <tr>
                 <td>Price</td>
-                <td><?php echo ($course['price']); ?></td>
+                <td>$<?php echo ($course['price']); ?></td>
             </tr>
             <tr>
                 <td>Participants Enrolled</td>
                 <td><?php echo ($course['participants']); ?></td>
             </tr>
             <tr>
-                <td>Seats Available</td>
+                <td>Participant Limit</td>
                 <td><?php echo ($course['participant_limit']); ?></td>
+            </tr>
+            <tr>
+                <td>Seats Available</td>
+                <td><?php echo ($course['participant_limit']-$course['participants']); ?></td>
             </tr>
             <tr>
                 <td>Instructor</td>

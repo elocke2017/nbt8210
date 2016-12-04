@@ -33,6 +33,7 @@ class UsersController extends Controller
 //        $this->middleware('administrator', ['only' => ['create', 'edit', 'destroy', 'update']]);
 //        $this->middleware('administrator');
 //        $this->middleware('role:admin|root');
+        /*$this->middleware('role:admin');*/
         $this->middleware('role:admin');
 
         $this->user = Auth::user();
@@ -121,11 +122,11 @@ class UsersController extends Controller
     {
         $object = $users;
         Log::info('UsersController.destroy: Start: '.$object->id.'|'.$object->name);
-        if ($this->authorize('destroy', $object))
-        {
+       /* if ($this->authorize('destroy', $object))
+        {*/
             Log::info('Authorization successful');
             $object->delete();
-        }
+       // }
         Log::info('UsersController.destroy: End: ');
         return redirect('/users');
     }

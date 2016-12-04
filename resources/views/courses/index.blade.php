@@ -11,7 +11,7 @@
             <th>Description</th>
             <th>Price</th>
             <th>Participants Enrolled</th>
-            <th>Seats Available</th>
+            <th>Participant Limit</th>
             <th>Instructor</th>
 
             <th colspan="3">Actions</th>
@@ -26,10 +26,10 @@
                 <td>{{ $course->participants }}</td>
                 <td>{{ $course->participant_limit }}</td>
                 <td>{{ $course->instructor }}</td>
-                <td><a href="{{url('/courses/show',$course->title)}}" class="btn btn-primary">Read</a></td>
-                <td><a href="{{url('/courses/edit',$course->title)}}" class="btn btn-warning">Update</a></td>
+                <td><a href="{{route('courses.show',$course->id)}}" class="btn btn-primary">Read</a></td>
+                <td><a href="{{route('courses.edit',$course->id)}}" class="btn btn-warning">Update</a></td>
                 <td>
-                    {!! Form::open(['method' => 'DELETE', 'route'=>['courses.destroy', $course->title]]) !!}
+                    {!! Form::open(['method' => 'DELETE', 'route'=>['courses.destroy', $course->id]]) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                     {!! Form::close() !!}
                 </td>

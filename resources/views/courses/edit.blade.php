@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <h1>Update Course</h1>
-    {!! Form::model($investment,['method' => 'PATCH','route'=>['courses.update',$course->email]]) !!}
+    {!! Form::model($course,['method' => 'PATCH','route'=>['courses.update',$course->id]]) !!}
     <div class="form-group">
         {!! Form::label('title', 'Title:') !!}
         {!! Form::text('title',null,['class'=>'form-control']) !!}
@@ -19,7 +19,7 @@
         {!! Form::text('participants',null,['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('participant_limit', 'Seats Available:') !!}
+        {!! Form::label('participant_limit', 'Participant Limit:') !!}
         {!! Form::text('participant_limit',null,['class'=>'form-control']) !!}
     </div>
     <div class="form-group">

@@ -27,7 +27,7 @@
                             <label class="col-md-4 control-label">Contact Number</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="contact number" value="{{ old('contact number') }}">
+                                <input type="text" class="form-control" name="contactNumber" value="{{ old('contactNumber') }}">
 
                                 @if ($errors->has('contactNumber'))
                                     <span class="help-block">
@@ -93,9 +93,9 @@
                             <label class="col-md-4 control-label">Zip Code</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="zipCode" value="{{ old('zip code') }}">
+                                <input type="text" class="form-control" name="zipCode" value="{{ old('zipCode') }}">
 
-                                @if ($errors->has('zip code'))
+                                @if ($errors->has('zipCode'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('zipCode') }}</strong>
                                     </span>

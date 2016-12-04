@@ -20,19 +20,19 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" style="text-align: center;">
                             <div class="item active" style="text-align: center;">
-                                <a href="http://www.unomaha.edu/college-of-information-science-and-technology" target="_blank">
-                                    <img src="StudentWordCloud1.jpg" class="img-responsive">
+                                <a href={{ route('course.index') }}>
+                                    <img src="images/information.jpg" class="img-responsive">
                                 </a>
                             </div>
                             <div class="item" style="text-align: center;">
                                 {{--<a href="http://www.nacada.ksu.edu" target="_blank">--}}
-                                <a href="http://www.unomaha.edu/college-of-information-science-and-technology/academics/advising.php" target="_blank">
-                                    <img src="/images/StudentFaculty.jpg" class="img-responsive">
+                                <a href="{{ route('course.index') }}">
+                                    <img src="images/lecturer.jpg" class="img-responsive">
                                 </a>
                             </div>
                             <div class="item" style="text-align: center;">
-                                <a href="http://www.unomaha.edu" target="_blank">
-                                    <img src="/images/StudentLearning.jpg" class="img-responsive">
+                                <a href="{{ route('course.index') }}">
+                                    <img src="images/penpaperkeyboard.jpg" class="img-responsive">
                                 </a>
                             </div>
                         </div>

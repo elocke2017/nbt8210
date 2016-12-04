@@ -37,6 +37,16 @@ Route::get('/add-to-cart/{id}', [
     'as' => 'course.addToCart'
 ]);
 
+Route::get('/reduce/{id}', [
+    'uses' => 'CourseController@getReduceByOne',
+    'as' => 'course.reduceByOne'
+]);
+
+Route::get('/remove/{id}', [
+    'uses' => 'CourseController@getRemoveItem',
+    'as' => 'course.remove'
+]);
+
 Route::get('/shopping-cart', [
     'uses' => 'CourseController@getCart',
     'as' => 'course.shoppingCart'

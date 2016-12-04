@@ -19,7 +19,7 @@
                             <table class="table table-bordered table-striped cds-datatable">
                                 <thead> <!-- Table Headings -->
                                 {{--<th>User</th><th>Email</th><th>Status</th><th class="no-sort">Actions</th>--}}
-                                <th>User</th><th>Email</th><th>Status</th>
+                                <th>User</th><th>Email</th><th>Status</th>{{--<th>Role</th>--}}
                                 </thead>
                                 <tbody> <!-- Table Body -->
                                 @foreach ($users as $user)
@@ -27,6 +27,7 @@
                                         <td class="table-text"><div><a href="{{ url('/users/'.$user->id.'/edit') }}">{{ $user->name }}</a></div></td>
                                         <td class="table-text"><div>{{ $user->email }}</div></td>
                                         @if ($user->active)<td class="table-text"><div>Active</div></td>@else<td class="table-text"><div>InActive</div></td>@endif
+                                        {{--<td class="table-text"><div>{{ SHOW USER ROLE? }}</div></td>--}}
                                         {{--<td>--}}
                                             {{--@if($user->id != 1) <!-- Administrator User -->--}}
                                             {{--<div class="pull-right" style="height: 25px;">--}}

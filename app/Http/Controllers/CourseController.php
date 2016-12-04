@@ -24,7 +24,7 @@ class CourseController extends Controller
     public function search(Request $request){
         $course = Course::where(function($query) use ($request) {
             if (($term = $request->get('term'))) {
-                $query->where('title', 'ilike', '%' . $term . '%');  //need to see if this is correct in Heroku! ilike won't work in mySQL
+                $query->where('title', 'ilike', '%' . $term . '%');  //need to see if this is correct in Heroku! ilike won't work in mySQL - update: worked in Heroku
             }
         })
             ->orderBy("id", "desc")
@@ -35,15 +35,52 @@ class CourseController extends Controller
 
     public function getAddToCart(Request $request, $id) {
         $course = Course::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->add($course, $course->id);
-
-        $request->session()->put('cart', $cart);
-        //dd($request->session()->get('cart'));
-        return redirect()->route('course.index');
+/*
+        if ($course->participants > 0) {*/
+            $oldCart = Session::has('cart') ? Session::get('cart') : null;
+            $cart = new Cart($oldCart);
+            $cart->add($course, $course->id);
+            $course->participants+=1; //increment number of participants in course by one
+            $course->save();
+            $request->session()->put('cart', $cart);
+            return redirect()->route('course.index');
+/*        } else {
+            return redirect()->route('course.index')->with('waitlist', 'The course you have selected is currently full. Please contact us for options or to be put on a waitlist.');
+        }*/
 
     }
+    public function getReduceByOne(Request $request, $id) {
+        $course = Course::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+        $course->participants-=1; //decrement number of participants in course by one
+        $course->save();
+
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+        return redirect()->route('course.shoppingCart');
+    }
+
+    public function getRemoveItem($id) {
+        $course = Course::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $course->participants=$course->participants-$cart->items[$id]['qty'];
+        $course->save(); //decrement number of participants in course by count of seats
+        $cart->removeItem($id);
+                $course->save();
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+
+        return redirect()->route('course.shoppingCart');
+}
 
     public function getCart () {
         if (!Session::has('cart')) {
@@ -104,10 +141,10 @@ class CourseController extends Controller
         return view('courses.index',compact('courses'));
     }
 
-    public function show($title)
+    public function show($id)
     {
 
-        $course = Course::findOrFail($title);
+        $course = Course::findOrFail($id);
 
         return view('courses.show',compact('course'));
     }
@@ -132,9 +169,9 @@ class CourseController extends Controller
         return redirect('courses');
     }
 
-    public function edit($title)
+    public function edit($id)
     {
-        $course=Course::find($title);
+        $course=Course::find($id);
         return view('courses.edit',compact('course'));
     }
 
@@ -144,18 +181,18 @@ class CourseController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($title,Request $request)
+    public function update($id,Request $request)
     {
         //
         $course= new Course($request->all());
-        $course= Course::find($title);
+        $course= Course::find($id);
         $course->update($request->all());
         return redirect('courses');
     }
 
-    public function destroy($title)
+    public function destroy($id)
     {
-        Course::find($title)->delete();
+        Course::find($id)->delete();
         return redirect('courses');
     }
 }

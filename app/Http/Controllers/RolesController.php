@@ -112,11 +112,11 @@ class RolesController extends Controller
     {
         $object = $roles;
         Log::info('RolesController.destroy: Start: '.$object->id.'|'.$object->name);
-        if ($this->authorize('destroy', $object))
-        {
+       /* if ($this->authorize('destroy', $object))
+        {*/
             Log::info('Authorization successful');
             $object->delete();
-        }
+        //}
         Log::info('RolesController.destroy: End: ');
         return redirect('/roles');
     }
