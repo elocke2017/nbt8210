@@ -35,8 +35,8 @@ class CourseController extends Controller
 
     public function getAddToCart(Request $request, $id) {
         $course = Course::find($id);
-/*
-        if ($course->participants > 0) {*/
+
+        if (($course->participant_limit-$course->participants) > 0) {
             $oldCart = Session::has('cart') ? Session::get('cart') : null;
             $cart = new Cart($oldCart);
             $cart->add($course, $course->id);
@@ -44,9 +44,9 @@ class CourseController extends Controller
             $course->save();
             $request->session()->put('cart', $cart);
             return redirect()->route('course.index');
-/*        } else {
-            return redirect()->route('course.index')->with('waitlist', 'The course you have selected is currently full. Please contact us for options or to be put on a waitlist.');
-        }*/
+        } else {
+            return redirect()->route('course.index')->with('success', 'The course you have selected is currently full. Please contact us for options or to be put on a waitlist: 1-800-NBT-CARES');
+        }
 
     }
     public function getReduceByOne(Request $request, $id) {
