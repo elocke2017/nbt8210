@@ -13,6 +13,7 @@ class Course extends Model
         'price',
         'participants',
         'participant_limit',
-        'instructor'
+        'instructor',
+        'courseType'
     ];
 }

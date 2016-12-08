@@ -28,6 +28,7 @@ Nebraska Business Training
                     <div class="clearfix">
                         <div class="pull-left price">${{ $course->price}}</div>
                         <div class="pull-right">{{ $course->participant_limit-$course->participants }} seats available</div>
+                        <br></b><div class="pull-right">{{ $course->courseType }}</div>
                         <br><div><a href="{{ route('course.addToCart', ['id' => $course->id]) }}" class="btn btn-success pull-right" role="button">Add To Cart</a>
                             </div>
                     </div>

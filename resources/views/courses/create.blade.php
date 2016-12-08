@@ -22,6 +22,10 @@
         {!! Form::label('instructor', 'Instructor:') !!}
         {!! Form::text('instructor',null,['class'=>'form-control']) !!}
     </div>
+    <div class="form-group">
+        {!! Form::label('courseType', 'Course Type:') !!}
+        {!! Form::text('courseType',null,['class'=>'form-control']) !!}
+    </div>
 
     <div class="form-group">
         {!! Form::submit('Save', ['class' => 'btn btn-primary form-control']) !!}

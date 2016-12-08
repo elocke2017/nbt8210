@@ -33,6 +33,10 @@
                 <td>Instructor</td>
                 <td><?php echo ($course['instructor']); ?></td>
             </tr>
+            <tr>
+                <td>Course Type</td>
+                <td><?php echo ($course['courseType']); ?></td>
+            </tr>
             </tbody>
         </table>
     </div>
