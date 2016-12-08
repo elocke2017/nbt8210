@@ -68,6 +68,9 @@ class Controller extends BaseController
             return 1; // by default return Administrator user id.
         }
     }
-
+public function contactus()
+	{
+	return view('contactus');
+	}
 
 }

@@ -117,4 +117,5 @@ Route::resource('roles', 'RolesController');
     });
 
     Route::resource('courses','CourseController');
+	Route::get('/contactus', 'Controller@contactus');
 //});
