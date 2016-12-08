@@ -16,7 +16,7 @@
                         <li class="list-group-item">
                             <span class="badge">Seats: {{ $course['qty']}}</span>
                             <strong>{{ $course['item']['title']  }}</strong>
-                            <span class="label label-success">$ {{ $course['price'] }} per seat</span>
+                            <span class="label label-success">$ {{ $course['price'] }}</span>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
                                     Action <span class="caret"></span>
